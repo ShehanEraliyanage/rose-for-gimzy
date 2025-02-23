@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/rose-for-gimzy/static/css/main.39ee8a8e.css",
-    "main.js": "/rose-for-gimzy/static/js/main.bcd1903d.js",
+    "main.js": "/rose-for-gimzy/static/js/main.f604c761.js",
     "index.html": "/rose-for-gimzy/index.html",
     "main.39ee8a8e.css.map": "/rose-for-gimzy/static/css/main.39ee8a8e.css.map",
-    "main.bcd1903d.js.map": "/rose-for-gimzy/static/js/main.bcd1903d.js.map"
+    "main.f604c761.js.map": "/rose-for-gimzy/static/js/main.f604c761.js.map"
   },
   "entrypoints": [
     "static/css/main.39ee8a8e.css",
-    "static/js/main.bcd1903d.js"
+    "static/js/main.f604c761.js"
   ]
 }
