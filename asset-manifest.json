@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ShehanEraliyanage.github.io/rose-for-gimzy/static/css/main.39ee8a8e.css",
+    "main.js": "/ShehanEraliyanage.github.io/rose-for-gimzy/static/js/main.bcd1903d.js",
+    "index.html": "/ShehanEraliyanage.github.io/rose-for-gimzy/index.html",
+    "main.39ee8a8e.css.map": "/ShehanEraliyanage.github.io/rose-for-gimzy/static/css/main.39ee8a8e.css.map",
+    "main.bcd1903d.js.map": "/ShehanEraliyanage.github.io/rose-for-gimzy/static/js/main.bcd1903d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.39ee8a8e.css",
+    "static/js/main.bcd1903d.js"
+  ]
+}
