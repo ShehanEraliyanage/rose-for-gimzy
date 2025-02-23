@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSprings, animated } from "react-spring";
 import "./App.css";
 
@@ -40,7 +40,6 @@ function App() {
     const randomImage =
       flowerImages[Math.floor(Math.random() * flowerImages.length)];
 
-    console.log("🚀 ~ addFlower ~ randomImage:", randomImage);
     // Create a new image element to preload the image
     const img = new Image();
     img.src = randomImage;
@@ -56,25 +55,41 @@ function App() {
     };
   };
 
+  const getRandomPosition = () => {
+    return {
+      x: Math.random() * window.innerWidth * 0.8, // Use 80% of screen width
+      y: Math.random() * window.innerHeight * 0.8, // Use 80% of screen height
+    };
+  };
+
   const springs = useSprings(
     flowers.length,
-    flowers.map(() => ({
-      from: {
-        transform: `translate(${Math.random() * (window.innerWidth - 100)}px, ${
-          Math.random() * (window.innerHeight - 100)
-        }px)`,
-      },
-      to: async (next) => {
-        while (1) {
-          await next({
-            transform: `translate(${
-              Math.random() * (window.innerWidth - 100)
-            }px, ${Math.random() * (window.innerHeight - 100)}px)`,
-          });
-        }
-      },
-      config: { duration: 5000 },
-    }))
+    flowers.map(() => {
+      const startPos = getRandomPosition();
+      return {
+        from: {
+          left: `${startPos.x}px`,
+          top: `${startPos.y}px`,
+        },
+        to: async (next) => {
+          while (1) {
+            const newPos = getRandomPosition();
+            await next({
+              left: `${newPos.x}px`,
+              top: `${newPos.y}px`,
+            });
+            await new Promise((resolve) =>
+              setTimeout(resolve, Math.random() * 1000)
+            ); // Add random delay
+          }
+        },
+        config: {
+          duration: 2000,
+          tension: 120,
+          friction: 14,
+        },
+      };
+    })
   );
 
   return (
@@ -90,7 +105,10 @@ function App() {
             src={flowers[index]}
             alt={`Rose ${index + 1}`}
             className="flower"
-            style={props}
+            style={{
+              position: "absolute",
+              ...props,
+            }}
           />
         ))}
       </div>
