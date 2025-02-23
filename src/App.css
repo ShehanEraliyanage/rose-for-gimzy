@@ -40,10 +40,13 @@ button:disabled {
 
 /* Flowers container */
 .flowers-container {
-  position: relative;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100vh; /* Ensure container takes full height */
   overflow: hidden; /* Prevent images from overflowing */
+  pointer-events: none;
 }
 
 /* Individual flower styles */
@@ -53,6 +56,8 @@ button:disabled {
   border-radius: 50%; /* Circular images */
   object-fit: cover; /* Ensure images fit */
   position: absolute;
+  will-change: transform;
+  pointer-events: none;
 }
 
 /* Floating animation with horizontal and diagonal movement */
