@@ -5,6 +5,17 @@ import "./App.css";
 function App() {
   const [flowers, setFlowers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [hearts, setHearts] = useState([]);
+
+  useEffect(() => {
+    const newHearts = Array.from({ length: 50 }, () => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: Math.random() * 15,
+      size: Math.random() * 0.5 + 0.5, // Random size between 0.5 and 1
+    }));
+    setHearts(newHearts);
+  }, []);
 
   // Array of image URLs (replace with your Google Image links)
   const flowerImages = [
@@ -95,9 +106,28 @@ function App() {
   return (
     <div className="App">
       <h1>For My Love, Gimzy 💖</h1>
+      <div className="love-message">Gimzy I Love Youuuuuuuu</div>
       <button onClick={addFlower} disabled={loading}>
         {loading ? "Loading..." : "Click for a Surprise 🌹"}
       </button>
+
+      <div className="floating-hearts">
+        {hearts.map((heart, index) => (
+          <div
+            key={index}
+            className="heart"
+            style={{
+              left: `${heart.left}%`,
+              top: `${heart.top}%`,
+              animationDelay: `${heart.delay}s`,
+              transform: `scale(${heart.size})`,
+            }}
+          >
+            ❤️
+          </div>
+        ))}
+      </div>
+
       <div className="flowers-container">
         {springs.map((props, index) => (
           <animated.img
