@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSprings, animated } from "react-spring";
 import "./App.css";
+import backgroundImage from "./assets/IMG_5191.jpg"; // Import background image
 
 function App() {
   const [flowers, setFlowers] = useState([]);
@@ -104,12 +105,15 @@ function App() {
   );
 
   return (
-    <div className="App">
-      <h1>For My Love, Gimzy 💖</h1>
-      <div className="love-message">Gimzy I Love Youuuuuuuu</div>
+    <div className="App" style={{ backgroundImage: `url(${backgroundImage})` }}>
+      <h1 style={{ fontSize: "30px" }}>For My Love, Gimzy 💖</h1>
+
       <button onClick={addFlower} disabled={loading}>
         {loading ? "Loading..." : "Click for a Surprise 🌹"}
       </button>
+      <div style={{ marginTop: "150px" }} className="love-message">
+        Ummi I Love Youuuuuuuu💕💞🤍💗💘
+      </div>
 
       <div className="floating-hearts">
         {hearts.map((heart, index) => (
