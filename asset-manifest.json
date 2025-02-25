@@ -1,14 +1,15 @@
 {
   "files": {
     "main.css": "/rose-for-gimzy/static/css/main.a19e6d87.css",
-    "main.js": "/rose-for-gimzy/static/js/main.7dc363e2.js",
+    "main.js": "/rose-for-gimzy/static/js/main.b04b370e.js",
+    "static/media/music.mp3": "/rose-for-gimzy/static/media/music.8a8f720fb60e96f9501b.mp3",
     "static/media/IMG_5191.jpg": "/rose-for-gimzy/static/media/IMG_5191.defd6c51628968c251b9.jpg",
     "index.html": "/rose-for-gimzy/index.html",
     "main.a19e6d87.css.map": "/rose-for-gimzy/static/css/main.a19e6d87.css.map",
-    "main.7dc363e2.js.map": "/rose-for-gimzy/static/js/main.7dc363e2.js.map"
+    "main.b04b370e.js.map": "/rose-for-gimzy/static/js/main.b04b370e.js.map"
   },
   "entrypoints": [
     "static/css/main.a19e6d87.css",
-    "static/js/main.7dc363e2.js"
+    "static/js/main.b04b370e.js"
   ]
 }
