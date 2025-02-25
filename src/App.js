@@ -37,6 +37,21 @@ function App() {
     "https://i.pinimg.com/736x/55/42/e2/5542e2d208e2a2d1e25ee7122bc65103.jpg",
     "https://i.pinimg.com/736x/75/9b/77/759b77c9b1f7737e19e10036a4305340.jpg",
     "https://i.pinimg.com/564x/50/34/10/5034102bd7e019963362d0c0fca60fee.jpg",
+    "https://media.tenor.com/L0OFpUCj9bkAAAAM/emote.gif",
+    "https://i.pinimg.com/originals/d0/e5/45/d0e5451273c83ccf1abe71c366c08b63.gif",
+    "https://i.pinimg.com/originals/ae/f5/00/aef5000829c04e91f0259d58727459a3.gif",
+    "https://i.pinimg.com/originals/0c/12/8b/0c128bdc34a377ee07a7526d21b305bb.gif",
+    "https://media.tenor.com/hmYv6-dCkGgAAAAj/bubu-dudu-bubu.gif",
+    "https://i.makeagif.com/media/11-03-2024/wP-crl.gif",
+    "https://media.tenor.com/7YbmqLzNGsoAAAAj/bubu-dudu-sseeyall.gif",
+    "https://i.pinimg.com/originals/7e/bd/71/7ebd71142a47c65e890af6471812fa88.gif",
+    "https://i.makeagif.com/media/1-24-2024/zr6UDW.gif",
+    "https://i.pinimg.com/originals/5b/d6/cf/5bd6cf6908501ff38c79924b713c666f.gif",
+    "https://i.pinimg.com/originals/6b/1d/69/6b1d69b588ce67dda3e65c96a86cfedc.gif",
+    "https://i.pinimg.com/originals/b9/ba/20/b9ba20f5678fc7640364fc96ccfd1410.gif",
+    "https://media.tenor.com/PXKZhCEfEfsAAAAj/bubu-bubu-dudu.gif",
+    "https://media.tenor.com/K5E9bEhGz84AAAAM/piyushzen.gif",
+    "https://media.tenor.com/Nm3VtXqm73oAAAAM/bubu-bubu-dudu.gif",
     "https://i.pinimg.com/736x/1c/ba/c4/1cbac481a49197769e48bb03c71a740e.jpg",
     "https://media.tenor.com/cVzKULzKpVgAAAAj/bubu-dudu-images-bubu-dudu-love.gif",
     "https://images.contentstack.io/v3/assets/bltcedd8dbd5891265b/bltdbc06972c10339ac/6668d4d065898628418a958d/4675159-WhiteRoses-Vase.jpg?q=70&width=3840&auto=webp",
@@ -44,6 +59,9 @@ function App() {
     "https://i.pinimg.com/originals/f5/e0/a5/f5e0a5e748b2dc73bdec6ba0aca0a083.gif",
     "https://rukminim2.flixcart.com/image/850/1000/xif0q/poster/t/z/t/small-cartoon-cute-bubu-dudu-poster-card-for-wall-decor-hd-original-imagvyenqjv4tbx4.jpeg?q=90&crop=false",
   ];
+
+  {
+  }
 
   const addFlower = () => {
     setLoading(true);
