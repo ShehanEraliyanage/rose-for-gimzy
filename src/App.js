@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useSprings, animated } from "react-spring";
 import "./App.css";
 import backgroundImage from "./assets/IMG_5191.jpg"; // Import background image
+import backgroundMusic from "./assets/music.mp3"; // Import background music
 
 function App() {
   const [flowers, setFlowers] = useState([]);
   const [loading, setLoading] = useState(false);
   const [hearts, setHearts] = useState([]);
+  const [audioPlayed, setAudioPlayed] = useState(false);
 
   useEffect(() => {
     const newHearts = Array.from({ length: 50 }, () => ({
@@ -17,6 +19,12 @@ function App() {
     }));
     setHearts(newHearts);
   }, []);
+
+  const playAudio = () => {
+    const audio = new Audio(backgroundMusic);
+    audio.play();
+    setAudioPlayed(true);
+  };
 
   // Array of image URLs (replace with your Google Image links)
   const flowerImages = [
@@ -60,11 +68,12 @@ function App() {
     "https://rukminim2.flixcart.com/image/850/1000/xif0q/poster/t/z/t/small-cartoon-cute-bubu-dudu-poster-card-for-wall-decor-hd-original-imagvyenqjv4tbx4.jpeg?q=90&crop=false",
   ];
 
-  {
-  }
-
   const addFlower = () => {
     setLoading(true);
+
+    if (!audioPlayed) {
+      playAudio();
+    }
 
     // Randomly select an image URL
     const randomImage =
