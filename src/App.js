@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useSprings, animated } from "react-spring";
 import "./App.css";
 import backgroundImage from "./assets/IMG_5191.jpg"; // Import background image
@@ -9,21 +9,69 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [hearts, setHearts] = useState([]);
   const [audioPlayed, setAudioPlayed] = useState(false);
+  const [loveMessages, setLoveMessages] = useState([]);
+  const [kisses, setKisses] = useState([]);
+  const [butterflies, setButterflies] = useState([]);
+  const audioRef = useRef(null);
 
   useEffect(() => {
+    // Initialize hearts
     const newHearts = Array.from({ length: 50 }, () => ({
       left: Math.random() * 100,
       top: Math.random() * 100,
       delay: Math.random() * 15,
-      size: Math.random() * 0.5 + 0.5, // Random size between 0.5 and 1
+      size: Math.random() * 0.5 + 0.5,
+      opacity: Math.random() * 0.5 + 0.5,
     }));
     setHearts(newHearts);
+
+    // Initialize butterflies
+    const newButterflies = Array.from({ length: 10 }, () => ({
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: Math.random() * 10,
+      size: Math.random() * 0.3 + 0.2,
+      rotation: Math.random() * 360,
+    }));
+    setButterflies(newButterflies);
+
+    // Initialize audio
+    audioRef.current = new Audio(backgroundMusic);
+    audioRef.current.loop = true;
+
+    // Add initial love messages
+    const initialMessages = [
+      "Gimzy, You're My Everything 💖",
+      "Ummi Loves You Forever 💝",
+      "My Sweet Gimzy 💗",
+      "Ummi's Heart Belongs to You 💕",
+      "Gimzy, You're My World 💘",
+      "Ummi's Love for You is Endless 💓",
+      "My Beautiful Gimzy 💞",
+      "Ummi's Forever Love 💟",
+      "Gimzy, You're My Sunshine ☀️",
+      "Ummi's Heart Beats for You 💓",
+      "My Precious Gimzy 💖",
+      "Ummi's Love is Eternal 💫",
+      "Gimzy, You're My Dream Come True ✨",
+      "Ummi's Soul is Yours 💞",
+      "My Darling Gimzy 💝",
+    ];
+    setLoveMessages(initialMessages);
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
   }, []);
 
   const playAudio = () => {
-    const audio = new Audio(backgroundMusic);
-    audio.play();
-    setAudioPlayed(true);
+    if (audioRef.current) {
+      audioRef.current.play();
+      setAudioPlayed(true);
+    }
   };
 
   // Array of image URLs (replace with your Google Image links)
@@ -75,6 +123,47 @@ function App() {
       playAudio();
     }
 
+    // Add a new love message
+    const newMessages = [
+      "Gimzy, You're My Everything 💖",
+      "Ummi Loves You More Each Day 💝",
+      "My Sweet Gimzy, Forever Yours 💗",
+      "Ummi's Heart Belongs Only to You 💕",
+      "Gimzy, You're My World and More 💘",
+      "Ummi's Love for You is Infinite 💓",
+      "My Beautiful Gimzy, Always Mine 💞",
+      "Ummi's Forever Love is Yours 💟",
+      "Gimzy, You're My Sunshine and Moon ☀️🌙",
+      "Ummi's Heart Beats Only for You 💓",
+      "My Precious Gimzy, My Everything 💖",
+      "Ummi's Love is Eternal and True 💫",
+      "Gimzy, You're My Dream Come True ✨",
+      "Ummi's Soul is Forever Yours 💞",
+      "My Darling Gimzy, My Love 💝",
+    ];
+    const newMessage =
+      newMessages[Math.floor(Math.random() * newMessages.length)];
+    setLoveMessages((prev) => [...prev, newMessage]);
+
+    // Add a new kiss
+    const newKiss = {
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: Math.random() * 5,
+      size: Math.random() * 0.3 + 0.2,
+    };
+    setKisses((prev) => [...prev, newKiss]);
+
+    // Add a new butterfly
+    const newButterfly = {
+      left: Math.random() * 100,
+      top: Math.random() * 100,
+      delay: Math.random() * 10,
+      size: Math.random() * 0.3 + 0.2,
+      rotation: Math.random() * 360,
+    };
+    setButterflies((prev) => [...prev, newButterfly]);
+
     // Randomly select an image URL
     const randomImage =
       flowerImages[Math.floor(Math.random() * flowerImages.length)];
@@ -84,7 +173,7 @@ function App() {
     img.src = randomImage;
 
     img.onload = () => {
-      setFlowers([...flowers, randomImage]);
+      setFlowers((prevFlowers) => [...prevFlowers, randomImage]);
       setLoading(false);
     };
 
@@ -98,6 +187,8 @@ function App() {
     return {
       x: Math.random() * window.innerWidth * 0.8, // Use 80% of screen width
       y: Math.random() * window.innerHeight * 0.8, // Use 80% of screen height
+      rotation: Math.random() * 360, // Add random rotation
+      scale: Math.random() * 0.5 + 0.5, // Add random scale
     };
   };
 
@@ -109,6 +200,8 @@ function App() {
         from: {
           left: `${startPos.x}px`,
           top: `${startPos.y}px`,
+          transform: `rotate(${startPos.rotation}deg) scale(${startPos.scale})`,
+          opacity: 0,
         },
         to: async (next) => {
           while (1) {
@@ -116,6 +209,8 @@ function App() {
             await next({
               left: `${newPos.x}px`,
               top: `${newPos.y}px`,
+              transform: `rotate(${newPos.rotation}deg) scale(${newPos.scale})`,
+              opacity: 1,
             });
             await new Promise((resolve) =>
               setTimeout(resolve, Math.random() * 1000)
@@ -133,45 +228,118 @@ function App() {
 
   return (
     <div className="App" style={{ backgroundImage: `url(${backgroundImage})` }}>
-      <h1 style={{ fontSize: "30px" }}>For My Love, Gimzy 💖</h1>
+      <div className="content-wrapper">
+        <h1 className="title">For My Love, Gimzy 💖</h1>
 
-      <button onClick={addFlower} disabled={loading}>
-        {loading ? "Loading..." : "Click for a Surprise 🌹"}
-      </button>
-      <div style={{ marginTop: "150px" }} className="love-message">
-        Ummi I Love Youuuuuuuu💕💞🤍💗💘
-      </div>
+        <button
+          onClick={addFlower}
+          disabled={loading}
+          className="surprise-button"
+        >
+          {loading ? "Loading..." : "Click for a Surprise 🌹"}
+        </button>
 
-      <div className="floating-hearts">
-        {hearts.map((heart, index) => (
-          <div
-            key={index}
-            className="heart"
-            style={{
-              left: `${heart.left}%`,
-              top: `${heart.top}%`,
-              animationDelay: `${heart.delay}s`,
-              transform: `scale(${heart.size})`,
-            }}
-          >
-            ❤️
-          </div>
-        ))}
-      </div>
+        <div className="love-message">
+          Gimzy, Ummi Loves Youuuuuuuu💕💞🤍💗💘
+        </div>
 
-      <div className="flowers-container">
-        {springs.map((props, index) => (
-          <animated.img
-            key={index}
-            src={flowers[index]}
-            alt={`Rose ${index + 1}`}
-            className="flower"
-            style={{
-              position: "absolute",
-              ...props,
-            }}
-          />
-        ))}
+        <div className="floating-messages">
+          {loveMessages.map((message, index) => (
+            <div
+              key={index}
+              className="floating-message"
+              style={{
+                animationDelay: `${index * 2}s`,
+                left: `${Math.random() * 80 + 10}%`,
+              }}
+            >
+              {message}
+            </div>
+          ))}
+        </div>
+
+        <div className="kisses-container">
+          {kisses.map((kiss, index) => (
+            <div
+              key={index}
+              className="kiss"
+              style={{
+                left: `${kiss.left}%`,
+                top: `${kiss.top}%`,
+                animationDelay: `${kiss.delay}s`,
+                transform: `scale(${kiss.size})`,
+              }}
+            >
+              💋
+            </div>
+          ))}
+        </div>
+
+        <div className="butterflies-container">
+          {butterflies.map((butterfly, index) => (
+            <div
+              key={index}
+              className="butterfly"
+              style={{
+                left: `${butterfly.left}%`,
+                top: `${butterfly.top}%`,
+                animationDelay: `${butterfly.delay}s`,
+                transform: `scale(${butterfly.size}) rotate(${butterfly.rotation}deg)`,
+              }}
+            >
+              🦋
+            </div>
+          ))}
+        </div>
+
+        <div className="sparkles">
+          {Array.from({ length: 20 }).map((_, index) => (
+            <div
+              key={index}
+              className="sparkle"
+              style={{
+                left: `${Math.random() * 100}%`,
+                top: `${Math.random() * 100}%`,
+                animationDelay: `${Math.random() * 5}s`,
+              }}
+            >
+              ✨
+            </div>
+          ))}
+        </div>
+
+        <div className="floating-hearts">
+          {hearts.map((heart, index) => (
+            <div
+              key={index}
+              className="heart"
+              style={{
+                left: `${heart.left}%`,
+                top: `${heart.top}%`,
+                animationDelay: `${heart.delay}s`,
+                transform: `scale(${heart.size})`,
+                opacity: heart.opacity,
+              }}
+            >
+              ❤️
+            </div>
+          ))}
+        </div>
+
+        <div className="flowers-container">
+          {springs.map((props, index) => (
+            <animated.img
+              key={index}
+              src={flowers[index]}
+              alt={`Rose ${index + 1}`}
+              className="flower"
+              style={{
+                position: "absolute",
+                ...props,
+              }}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
