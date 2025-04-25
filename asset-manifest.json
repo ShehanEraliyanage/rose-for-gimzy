@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/rose-for-gimzy/static/css/main.a19e6d87.css",
-    "main.js": "/rose-for-gimzy/static/js/main.b04b370e.js",
+    "main.css": "/rose-for-gimzy/static/css/main.dad1124e.css",
+    "main.js": "/rose-for-gimzy/static/js/main.b00097d9.js",
     "static/media/music.mp3": "/rose-for-gimzy/static/media/music.8a8f720fb60e96f9501b.mp3",
     "static/media/IMG_5191.jpg": "/rose-for-gimzy/static/media/IMG_5191.defd6c51628968c251b9.jpg",
     "index.html": "/rose-for-gimzy/index.html",
-    "main.a19e6d87.css.map": "/rose-for-gimzy/static/css/main.a19e6d87.css.map",
-    "main.b04b370e.js.map": "/rose-for-gimzy/static/js/main.b04b370e.js.map"
+    "main.dad1124e.css.map": "/rose-for-gimzy/static/css/main.dad1124e.css.map",
+    "main.b00097d9.js.map": "/rose-for-gimzy/static/js/main.b00097d9.js.map"
   },
   "entrypoints": [
-    "static/css/main.a19e6d87.css",
-    "static/js/main.b04b370e.js"
+    "static/css/main.dad1124e.css",
+    "static/js/main.b00097d9.js"
   ]
 }
